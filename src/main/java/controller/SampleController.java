@@ -5,6 +5,9 @@ import domain.SampleDTOList;
 import domain.TodoDTO;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -100,5 +103,17 @@ public class SampleController {
         dto.setAge(26);
 
         return dto;
+    }
+
+    @GetMapping("/ex06")
+    public ResponseEntity<String> ex06() {
+        log.info("/ex06.........");
+
+        String msg = "{\"name\": \"홍길동\"}";
+
+        HttpHeaders header = new HttpHeaders();
+        header.add("Content-Type", "application/json;charset=UTF-8");
+
+        return new ResponseEntity<>(msg, header, HttpStatus.OK);
     }
 }

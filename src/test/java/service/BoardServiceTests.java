@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +39,45 @@ public class BoardServiceTests {
         boardService.register(board);
 
         log.info("생성된 게시글의 번호 : " + board.getBno());
+    }
+
+    @Test
+    public void testGetList() {
+
+        boardService.getList().forEach(boardVO -> log.info(boardVO));
+    }
+
+    @Test
+    public void testGet() {
+
+        //given
+        Long bno = 10L;
+
+        //when
+        BoardVO boardVO = boardService.get(bno);
+
+        //then
+        log.info(boardVO);
+    }
+
+    @Test
+    public void testModify() {
+        BoardVO boardVO = boardService.get(10L);
+
+        if (boardVO == null) {
+            return;
+        }
+
+        boardVO.setTitle("제목 수정");
+
+        log.info("MODIFY RESULT : " + boardService.modify(boardVO));
+
+    }
+
+    @Test
+    public void testRemove() {
+
+        log.info("REMOVE RESULT : " + boardService.remove(10L));
     }
 
 }

@@ -1,6 +1,7 @@
 package mapper;
 
 import domain.BoardVO;
+import domain.Criteria;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -9,6 +10,8 @@ public interface BoardMapper {
 
     //@Select("select * from TBL_BOARD where bno > 0")
     public List<BoardVO> getList();
+
+    public List<BoardVO> getListWithPaging(Criteria cri);
 
     public void insert(BoardVO board);
 
@@ -19,4 +22,5 @@ public interface BoardMapper {
     public int delete(Long bno);
 
     public int update(BoardVO board);
+
 }

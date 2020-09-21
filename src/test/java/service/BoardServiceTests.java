@@ -1,6 +1,7 @@
 package service;
 
 import domain.BoardVO;
+import domain.Criteria;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -44,7 +45,8 @@ public class BoardServiceTests {
     @Test
     public void testGetList() {
 
-        boardService.getList().forEach(boardVO -> log.info(boardVO));
+        Criteria cri = new Criteria();
+        boardService.getList(cri).forEach(boardVO -> log.info(boardVO));
     }
 
     @Test

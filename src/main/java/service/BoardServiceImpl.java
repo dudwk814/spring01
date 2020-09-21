@@ -1,6 +1,7 @@
 package service;
 
 import domain.BoardVO;
+import domain.Criteria;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -48,10 +49,10 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList() {
+    public List<BoardVO> getList(Criteria cri) {
 
-        log.info("getList...........");
+        log.info("get List with criteria : " + cri);
 
-        return mapper.getList();
+        return mapper.getListWithPaging(cri);
     }
 }

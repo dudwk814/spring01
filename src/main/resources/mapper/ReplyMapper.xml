@@ -29,4 +29,13 @@
             update tbl_reply set reply = #{reply}, updateDate = sysdate where rno = #{rno}
         ]]>
     </update>
+
+    <select id="getListWithPaging" resultType="domain.ReplyVO">
+        <![CDATA[
+            select rno, bno, reply, replyer, replyDate, updateDate
+            from tbl_reply
+            where bno = #{bno}
+            order by rno asc
+        ]]>
+    </select>
 </mapper>

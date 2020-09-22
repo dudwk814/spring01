@@ -59,6 +59,7 @@
     </div>
     <!-- ./row -->
 </div>
+<script src="/resources/js/reply.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var operForm = $("#operForm");

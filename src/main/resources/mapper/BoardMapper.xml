@@ -24,7 +24,7 @@
                             content like '%'||#{keyword}||'%'
                         </when>
                         <when test="type == 'W'.toString()">
-                            wrtier like '%'||#{keyword}||'%'
+                            writer like '%'||#{keyword}||'%'
                         </when>
                     </choose>
                 </trim>

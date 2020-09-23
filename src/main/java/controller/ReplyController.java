@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Criteria;
+import domain.ReplyPageDTO;
 import domain.ReplyVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,7 +34,7 @@ public class ReplyController {
     }
 
     @GetMapping(value = "/pages/{bno}/{page}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<ReplyVO>> getList(@PathVariable("bno") Long bno, @PathVariable("page") int page) {
+    public ResponseEntity<ReplyPageDTO> getList(@PathVariable("bno") Long bno, @PathVariable("page") int page) {
 
         log.info("getList.......................");
 
@@ -41,7 +42,7 @@ public class ReplyController {
 
         log.info(cri);
 
-        return new ResponseEntity<>(replyService.getList(cri, bno), HttpStatus.OK);
+        return new ResponseEntity<>(replyService.getListPage(cri, bno), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{rno}", produces = {MediaType.APPLICATION_JSON_VALUE})

@@ -1,6 +1,7 @@
 package service;
 
 import domain.Criteria;
+import domain.ReplyPageDTO;
 import domain.ReplyVO;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.RequiredArgsConstructor;
@@ -50,5 +51,11 @@ public class ReplyServiceImpl implements ReplyService {
 
         log.info("get Reply List of a Board " + bno);
         return replyMapper.getListWithPaging(cri, bno);
+    }
+
+    @Override
+    public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+
+        return new ReplyPageDTO(replyMapper.getCountByBno(bno), replyMapper.getListWithPaging(cri, bno));
     }
 }

@@ -22,8 +22,8 @@
     <schema id="7" parent="1" name="BOOK_EX">
       <ObjectId>91</ObjectId>
       <CreatedTimestamp>2020-09-16.06:32:38</CreatedTimestamp>
-      <ModifiedTimestamp>2020-09-24.23:38:41</ModifiedTimestamp>
-      <IntrospectionTimestamp>2020-09-24.23:38:42</IntrospectionTimestamp>
+      <ModifiedTimestamp>2020-09-25.10:39:13</ModifiedTimestamp>
+      <IntrospectionTimestamp>2020-09-25.10:39:16</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="8" parent="1" name="CTXSYS">
@@ -140,7 +140,7 @@
     <table id="42" parent="7" name="TBL_BOARD">
       <ObjectId>79446</ObjectId>
       <CreatedTimestamp>2020-09-20.00:42:39</CreatedTimestamp>
-      <ModifiedTimestamp>2020-09-20.00:43:14</ModifiedTimestamp>
+      <ModifiedTimestamp>2020-09-25.10:39:13</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="43" parent="7" name="TBL_REPLY">
@@ -34203,7 +34203,12 @@
       <DataType>DATE|0s</DataType>
       <DefaultExpression>sysdate</DefaultExpression>
     </column>
-    <index id="4911" parent="42" name="PK_BOARD">
+    <column id="4911" parent="42" name="REPLYCNT">
+      <Position>7</Position>
+      <DataType>NUMBER(*)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="4912" parent="42" name="PK_BOARD">
       <ObjectId>79447</ObjectId>
       <CreatedTimestamp>2020-09-20.00:43:14</CreatedTimestamp>
       <ModifiedTimestamp>2020-09-20.00:43:14</ModifiedTimestamp>
@@ -34211,44 +34216,44 @@
       <ColNames>BNO</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="4912" parent="42" name="PK_BOARD">
+    <key id="4913" parent="42" name="PK_BOARD">
       <ModifiedTimestamp>2020-09-20.00:43:14</ModifiedTimestamp>
       <ColNames>BNO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>PK_BOARD</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="4913" parent="43" name="RNO">
+    <column id="4914" parent="43" name="RNO">
       <Position>1</Position>
       <DataType>NUMBER(10 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="4914" parent="43" name="BNO">
+    <column id="4915" parent="43" name="BNO">
       <Position>2</Position>
       <DataType>NUMBER(10 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="4915" parent="43" name="REPLY">
+    <column id="4916" parent="43" name="REPLY">
       <Position>3</Position>
       <DataType>VARCHAR2(1000 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="4916" parent="43" name="REPLYER">
+    <column id="4917" parent="43" name="REPLYER">
       <Position>4</Position>
       <DataType>VARCHAR2(50 byte)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="4917" parent="43" name="REPLYDATE">
+    <column id="4918" parent="43" name="REPLYDATE">
       <Position>5</Position>
       <DataType>DATE|0s</DataType>
       <DefaultExpression>sysdate</DefaultExpression>
     </column>
-    <column id="4918" parent="43" name="UPDATEDATE">
+    <column id="4919" parent="43" name="UPDATEDATE">
       <Position>6</Position>
       <DataType>DATE|0s</DataType>
       <DefaultExpression>sysdate</DefaultExpression>
     </column>
-    <index id="4919" parent="43" name="PK_REPLY">
+    <index id="4920" parent="43" name="PK_REPLY">
       <ObjectId>79565</ObjectId>
       <CreatedTimestamp>2020-09-23.01:17:11</CreatedTimestamp>
       <ModifiedTimestamp>2020-09-23.01:17:11</ModifiedTimestamp>
@@ -34256,7 +34261,7 @@
       <ColNames>RNO</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="4920" parent="43" name="IDX_REPLY">
+    <index id="4921" parent="43" name="IDX_REPLY">
       <ObjectId>79575</ObjectId>
       <CreatedTimestamp>2020-09-24.00:52:17</CreatedTimestamp>
       <ModifiedTimestamp>2020-09-24.00:52:17</ModifiedTimestamp>
@@ -34266,29 +34271,29 @@ RNO</ColNames>
       <ReverseColNames>BNO</ReverseColNames>
       <FunctionBased>1</FunctionBased>
     </index>
-    <key id="4921" parent="43" name="PK_REPLY">
+    <key id="4922" parent="43" name="PK_REPLY">
       <ModifiedTimestamp>2020-09-23.01:17:11</ModifiedTimestamp>
       <ColNames>RNO</ColNames>
       <InitiallyDeferred>1</InitiallyDeferred>
       <UnderlyingIndexName>PK_REPLY</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="4922" parent="43" name="FK_REPLY">
+    <foreign-key id="4923" parent="43" name="FK_REPLY">
       <ModifiedTimestamp>2020-09-23.01:18:01</ModifiedTimestamp>
       <ColNames>BNO</ColNames>
       <RefTableName>TBL_BOARD</RefTableName>
       <RefKeyName>PK_BOARD</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="4923" parent="44" name="COL1">
+    <column id="4924" parent="44" name="COL1">
       <Position>1</Position>
       <DataType>VARCHAR2(500 byte)|0s</DataType>
     </column>
-    <column id="4924" parent="45" name="COL2">
+    <column id="4925" parent="45" name="COL2">
       <Position>1</Position>
       <DataType>VARCHAR2(50 byte)|0s</DataType>
     </column>
-    <column id="4925" parent="46" name="ID">
+    <column id="4926" parent="46" name="ID">
       <Position>1</Position>
       <DataType>NUMBER(10 digit)|0s</DataType>
     </column>

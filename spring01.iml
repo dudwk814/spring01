@@ -13,7 +13,11 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Security Context" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/security-context.xml</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
 </module>

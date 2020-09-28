@@ -8,5 +8,12 @@
       <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@localhost:1521:orcl</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="ad0d69a6-cd36-41ab-b9bc-81f10274dc99">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@localhost:1521:orcl</jdbc-url>
+    </data-source>
   </component>
 </project>

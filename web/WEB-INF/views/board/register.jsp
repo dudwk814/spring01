@@ -190,6 +190,9 @@
             return true;
         }
 
+        var csrfHeaderName = "${_csrf.headerName}";
+        var csrfTokenValue = "${_csrf.token}";
+
         $("input[type='file']").change(function(e){
 
             var formData = new FormData();
@@ -210,8 +213,12 @@
             $.ajax({
                 url: '/uploadAjaxAction',
                 processData: false,
-                contentType: false,data:
-                formData,type: 'POST',
+                contentType: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                },
+                data: formData,
+                type: 'POST',
                 dataType:'json',
                 success: function(result){
                     console.log(result);
@@ -296,6 +303,9 @@
             $.ajax({
                 url: '/deleteFile',
                 data: {fileName: targetFile, type:type},
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                },
                 dataType:'text',
                 type: 'POST',
                 success: function(result){

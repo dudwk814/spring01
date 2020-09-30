@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@include file="../includes/header.jsp"%>
 
 <div class="row">
@@ -28,6 +29,7 @@
                     <input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
                     <input type="hidden" name="type" value='<c:out value="${cri.type}"/>'/>
                     <input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'/>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <div class="form-group">
                         <label>Bno</label><input class="form-control" name="bno" value='<c:out value="${board.bno}"/>' readonly="readonly">
                     </div>
@@ -54,8 +56,13 @@
                         <input class="form-control" name="updateDate" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.updateDate}"/>' readonly="readonly">
                     </div>
 
-                    <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-                    <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+                    <sec:authentication property="principal" var="pinfo"/>
+                    <sec:authorize access="isAuthenticated()">
+                        <c:if test="${pinfo.username eq board.writer}">
+                            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+                            <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+                        </c:if>
+                    </sec:authorize>
                     <button type="submit" data-oper='list' class="btn btn-info">List</button>
                 </form>
                 </div>
@@ -277,6 +284,9 @@
             return true;
         }
 
+        var csrfHeaderName = "${_csrf.headerName}";
+        var csrfTokenValue = "${_csrf.token}";
+
         $("input[type='file']").change(function(e){
 
             var formData = new FormData();
@@ -299,6 +309,9 @@
                 processData: false,
                 contentType: false,data:
                 formData,type: 'POST',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                },
                 dataType:'json',
                 success: function(result){
                     console.log(result);

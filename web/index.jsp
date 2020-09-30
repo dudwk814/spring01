@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+    <script type="text/javascript">
+        self.location = "/board/list";
+    </script>
   </body>
 </html>
